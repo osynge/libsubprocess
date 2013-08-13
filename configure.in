@@ -8,19 +8,19 @@ AC_CONFIG_AUX_DIR(config)
 GCCVER=$EDG_RPM_RELEASE_VERSION 
 AC_SUBST(GCCVER)
 
-BRUTTAG='$Name:  $'
+#BRUTTAG='$Name:  $'
 
 dnl -------------------------------------------------------------------------
 dnl Hack to get the current version
 dnl -------------------------------------------------------------------------
-CVSVERSION=`echo $BRUTTAG | cut -d':' -f2 | tr '_' '.' | tr -d 'v$ '`
+CVSVERSION=`echo $SRC_VERSION | cut -d':' -f2 | tr '_' '.' | tr -d 'v$ '`
 if test "A" = A$CVSVERSION; then
     CVSVERSION=`date '+20%y%m%d%H'`
     CVSVERSION="cvs"$CVSVERSION
 fi
 
 
-GENERIC_LIBRARY_VERSION=`echo $BRUTTAG | cut -d':' -f2 | tr '_' ':' `
+GENERIC_LIBRARY_VERSION=`echo $SRC_VERSION | cut -d':' -f2 | tr '_' ':' `
 AC_SUBST(GENERIC_LIBRARY_VERSION)
 
 
