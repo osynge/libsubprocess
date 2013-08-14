@@ -18,10 +18,10 @@ VER_MAJOR=47
 VER_MINOR=6
 VER_PATCH=1
 if test "A" = A$RELEASE; then
-    VER_PATCH=${VER_PATCH}_`date '+20%y%m%d%H'`
+    VER_PATCH=${VER_PATCH}_`date '+20%y_%m_%d_%H'`
 fi
 
-AM_INIT_AUTOMAKE(dcap,$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR,"support@dcache.org","dcap","http://www.dcache.org/")
+AM_INIT_AUTOMAKE(subprocess,$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR,"os@yokel.org","subprocess","http://www.yokel.org/")
 AC_SUBST(VER_ARCHITECTURE)
 AC_SUBST(VER_MAJOR)
 AC_SUBST(VER_MINOR)
@@ -29,6 +29,9 @@ AC_SUBST(VER_PATCH)
 
 LIBRARY_VERSION="$VER_ARCHITECTURE:$VER_MAJOR:1"
 AC_SUBST(LIBRARY_VERSION)
+
+
+VERSION_STRING="$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR.$VER_PATCH"
 
 AC_PROG_CC
 AM_PROG_CC_C_O
@@ -159,7 +162,7 @@ AC_DEFINE_UNQUOTED(PACKAGE_MENU_DIR, "${packageprefix}/${packagemenudir}",[Defin
 AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}",[Defines the source code directory])
 
 
-DOCD=${packageprefix}//share/doc/${PACKAGE}-${VERSION}
+DOCD=${packageprefix}//share/doc/${PACKAGE}-${VERSION_STRING}
 AC_MSG_CHECKING([for directory where to install docs])
 AC_ARG_WITH(doc-dir,[  --with-doc-dir=<dir> Default is $DOCD/],
             doc_dir="$withval", doc_dir="$DOCD")

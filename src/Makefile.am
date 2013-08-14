@@ -38,7 +38,7 @@ dnl libsubprocess_test_LDFLAGS = -ldb
 
 lib_LTLIBRARIES = libsubprocess.la
 libsubprocess_la_SOURCES= $(c_sources)
-
+libsubprocess_la_LDFLAGS = -no-undefined -version-info $(LIBRARY_VERSION)
 
 library_includedir=$(includedir)/yokel
 library_include_HEADERS = $(h_sources)
