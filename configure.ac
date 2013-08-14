@@ -3,43 +3,61 @@ dnl Created by Anjuta - will be overwritten
 dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
 
-AC_INIT(configure.in)
+# Only continue if this source file exists
+AC_INIT(src/main.c)
 AC_CONFIG_AUX_DIR(config)
-GCCVER=$EDG_RPM_RELEASE_VERSION 
-AC_SUBST(GCCVER)
 
-#BRUTTAG='$Name:  $'
+AM_CONFIG_HEADER(src/debug_level.h)
 
-dnl -------------------------------------------------------------------------
-dnl Hack to get the current version
-dnl -------------------------------------------------------------------------
-CVSVERSION=`echo $SRC_VERSION | cut -d':' -f2 | tr '_' '.' | tr -d 'v$ '`
-if test "A" = A$CVSVERSION; then
-    CVSVERSION=`date '+20%y%m%d%H'`
-    CVSVERSION="cvs"$CVSVERSION
+
+dnl uncomment when tagging
+#RELEASE=TRUE
+
+VER_ARCHITECTURE=2
+VER_MAJOR=47
+VER_MINOR=6
+VER_PATCH=1
+if test "A" = A$RELEASE; then
+    VER_PATCH=${VER_PATCH}_`date '+20%y%m%d%H'`
 fi
 
+AM_INIT_AUTOMAKE(dcap,$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR,"support@dcache.org","dcap","http://www.dcache.org/")
+AC_SUBST(VER_ARCHITECTURE)
+AC_SUBST(VER_MAJOR)
+AC_SUBST(VER_MINOR)
+AC_SUBST(VER_PATCH)
 
-GENERIC_LIBRARY_VERSION=`echo $SRC_VERSION | cut -d':' -f2 | tr '_' ':' `
-AC_SUBST(GENERIC_LIBRARY_VERSION)
+LIBRARY_VERSION="$VER_ARCHITECTURE:$VER_MAJOR:1"
+AC_SUBST(LIBRARY_VERSION)
 
-
-dnl Checks for programs.
-
-
-AC_ISC_POSIX
 AC_PROG_CC
 AM_PROG_CC_C_O
+AC_CHECK_FUNCS([wait])
+AC_CHECK_FUNCS([fork])
+AC_CHECK_FUNCS([waitpid])
+AC_CHECK_FUNCS([malloc])
+AC_CHECK_FUNCS([execv])
+#
+# Wall
+#
+AC_CACHE_CHECK([for maximum warnings compiler flag],
+  ac_cv_cwflag,
+[case "${CC-cc}" in
+  *gcc*) ac_cv_cwflag="-Wall -pedantic -pipe";;
+  *)
+  ;;
+esac])
+AC_SUBST([CWFLAG], [$ac_cv_cwflag])
+
 
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
-
-AC_HEADER_STDC
+AC_CHECK_HEADERS([unistd.h sys/wait.h stdio.h stdlib.h string.h])
 AM_PROG_LIBTOOL
 
-AM_INIT_AUTOMAKE(edg-se-lib-launcher,$CVSVERSION)
+AM_INIT_AUTOMAKE(libsubprocess,$CVSVERSION)
 AM_CONFIG_HEADER(src/config.h)
 
 AC_CONFIG_MACRO_DIR([m4])
@@ -163,6 +181,6 @@ AC_SUBST(DOC_DIR)
 AC_OUTPUT([
 Makefile
 src/Makefile
-edg-se-lib-launcher.spec
+libsubprocess.spec
 ])
 
