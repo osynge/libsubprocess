@@ -1,5 +1,5 @@
 Summary:  Shared Libary heavilly used by WP5
-Name: @PACKAGE@@GCCVER@
+Name: @PACKAGE@
 Version: @VERSION@
 License: BSD License
 Release: 0
