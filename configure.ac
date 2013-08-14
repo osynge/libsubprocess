@@ -3,21 +3,29 @@ dnl Created by Anjuta - will be overwritten
 dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
 
-PACKAGE_VERSION=0.0.4
+bill=0.0.1
+AC_INIT(subprocess,0.0.2)
+
+RELEASEVERSION="0.0.31"
+#VERSION=$RELEASEVERSION
 dnl uncomment when tagging
 #RELEASE=TRUE
+
 if test "A" = A$RELEASE; then
-    PACKAGE_VERSION=${PACKAGE_VERSION}_rc`date '+20%y_%m_%d_%H'`
+    RELEASEVERSION=$RELEASEVERSION`date '+20%y%m%d%H'`
 fi
 
 
+
+
+
+#AC_INIT(src/subprocess_tes,0.0.1)
+
 # Only continue if this source file exists
 
-AC_INIT(src/subprocess_test.c)
 AC_CONFIG_AUX_DIR(config)
 
 AM_CONFIG_HEADER(src/config.h)
-AC_SUBST(PACKAGE_VERSION)
 
 
 VER_ARCHITECTURE=1
@@ -32,10 +40,9 @@ AC_SUBST(VER_MINOR)
 AC_SUBST(VER_PATCH)
 
 LIBRARY_VERSION="$VER_ARCHITECTURE:$VER_MAJOR:$VER_MINOR"
+
 AC_SUBST(LIBRARY_VERSION)
 
-
-AC_SUBST(PACKAGE_VERSION)
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_CHECK_FUNCS([wait])
@@ -83,6 +90,11 @@ AC_SUBST(ac_aux_dir)
 RPM_PREFIX="/usr"
 AC_SUBST(RPM_PREFIX)
 
+FFFF="1"
+EEEE="sdsdsd"$VERSION
+
+dnl AC_SUBST(RPMVERSION,$RELEASEVERSION)
+AC_SUBST(RPMVERSION,$VERSION)
 dnl =============
 dnl Check RPM dir
 dnl =============
@@ -181,7 +193,9 @@ fi
 
 AC_SUBST(DOC_DIR)
 
+AC_SUBST(PACKAGE_VERSION)
 
+AC_SUBST(VERSION)
 
 
 AC_OUTPUT([

@@ -1,6 +1,6 @@
 Summary:  Shared Libary heavilly used by WP5
 Name: @PACKAGE@
-Version: @PACKAGE_VERSION@
+Version: @RPMVERSION@
 License: BSD License
 Release: 0
 #Copyright: BSD License
@@ -25,10 +25,9 @@ This library is heavilly used in the European Data grid storage Element
 # Build
 #
 %build
-./configure --prefix=%{prefix} \
-	--with-doc-dir=%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/ \
-    --with-handler-dir=%{prefix}/lib/se/handlers \
-    --with-cgi-dir=%{prefix}/lib/se/cgi 
+#./configure --prefix=%{prefix} \
+#	--with-rpm-version=@RPMVERSION@
+./configure --prefix=%{prefix}
 make
 
 #
