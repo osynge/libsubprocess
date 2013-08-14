@@ -4,7 +4,7 @@ dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
 
 # Only continue if this source file exists
-AC_INIT(src/main.c)
+AC_INIT(src/subprocess_test.c)
 AC_CONFIG_AUX_DIR(config)
 
 AM_CONFIG_HEADER(src/debug_level.h)
