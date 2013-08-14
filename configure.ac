@@ -58,7 +58,7 @@ AC_CHECK_HEADERS([unistd.h sys/wait.h stdio.h stdlib.h string.h])
 AM_PROG_LIBTOOL
 
 AM_INIT_AUTOMAKE(libsubprocess,$CVSVERSION)
-AM_CONFIG_HEADER(src/config.h)
+#AM_CONFIG_HEADER(src/config.h)
 
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -159,8 +159,7 @@ AC_DEFINE_UNQUOTED(PACKAGE_MENU_DIR, "${packageprefix}/${packagemenudir}",[Defin
 AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}",[Defines the source code directory])
 
 
-
-DOCD=${prefix}//share/doc/${PACKAGE}-${VERSION}
+DOCD=${packageprefix}//share/doc/${PACKAGE}-${VERSION}
 AC_MSG_CHECKING([for directory where to install docs])
 AC_ARG_WITH(doc-dir,[  --with-doc-dir=<dir> Default is $DOCD/],
             doc_dir="$withval", doc_dir="$DOCD")

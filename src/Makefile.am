@@ -18,24 +18,27 @@ AM_CFLAGS =\
 	 -O1\
 	 -g
 
-bin_PROGRAMS = edg-se-lib-launcher
-edg_se_lib_launcher_CFLAGS = $(AM_CFLAGS)
+
+libsubprocess_test_CFLAGS = $(AM_CFLAGS)
+noinst_PROGRAMS = libsubprocess_test
 
 
 
-edg_se_lib_launcher_SOURCES = \
+
+
+libsubprocess_test_SOURCES = \
 	main.c\
 	$(c_sources)
 
 
 
-dnl edg_se_lib_launcher_LDFLAGS = -ldb 
+dnl libsubprocess_test_LDFLAGS = -ldb 
 
 
 
-lib_LTLIBRARIES = liblauncher.la
-liblauncher_la_SOURCES= $(c_sources)
+lib_LTLIBRARIES = libsubprocess.la
+libsubprocess_la_SOURCES= $(c_sources)
 
 
-library_includedir=$(includedir)/se
+library_includedir=$(includedir)/yokel
 library_include_HEADERS = $(h_sources)
