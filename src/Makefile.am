@@ -27,7 +27,7 @@ noinst_PROGRAMS = libsubprocess_test
 
 
 libsubprocess_test_SOURCES = \
-	main.c\
+	subprocess_test.c\
 	$(c_sources)
 
 
