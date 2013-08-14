@@ -1,11 +1,11 @@
 Summary:  Shared Libary heavilly used by WP5
 Name: @PACKAGE@
-Version: @VERSION@
+Version: @PACKAGE_VERSION@
 License: BSD License
 Release: 0
 #Copyright: BSD License
 Group: Grid/EDG
-Prefix: /opt/edg
+Prefix: @RPM_PREFIX@
 URL: http://marianne.in2p3.fr/datagrid/
 Source: http://datagrid.in2p3.fr/pkgs/@PACKAGE@-@VERSION@.tar.gz
 BuildRoot: %{_tmppath}/%{name}-root
@@ -26,7 +26,7 @@ This library is heavilly used in the European Data grid storage Element
 #
 %build
 ./configure --prefix=%{prefix} \
-	--with-doc-dir=%{prefix}/share/doc/@PACKAGE@-@VERSION@/ \
+	--with-doc-dir=%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/ \
     --with-handler-dir=%{prefix}/lib/se/handlers \
     --with-cgi-dir=%{prefix}/lib/se/cgi 
 make
@@ -56,38 +56,33 @@ rm -rf $RPM_BUILD_ROOT
 #
 %files
 
-%{prefix}/lib/liblauncher.so.0.0.0
-%{prefix}/lib/liblauncher.so.0
-%{prefix}/lib/liblauncher.so
-%{prefix}/lib/liblauncher.la
-%{prefix}/lib/liblauncher.a
-
-%{prefix}/bin/edg-se-lib-launcher
+%{prefix}/lib/libsubprocess.*
 
 
-%{prefix}/include/se/subprocess.h
-%{prefix}/include/se/ptrptr.h
+
+%{prefix}/include/yokel/subprocess.h
+%{prefix}/include/yokel/ptrptr.h
 
 
 %defattr (-,root,root)
 #%doc README LICENSE 
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/README
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/COPYING
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/NEWS
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/index.html
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/edg-example.sgml
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/edg-example.ps
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/edg-example.pdf
-#%{prefix}/share/doc/@PACKAGE@-@VERSION@/edg-example.html
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/README
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/COPYING
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/NEWS
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/index.html
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.sgml
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.ps
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.pdf
+#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.html
 
 %defattr (-,root,root)
 %doc 
-%{prefix}/share/doc/@PACKAGE@-@VERSION@/AUTHORS
-%{prefix}/share/doc/@PACKAGE@-@VERSION@/COPYING
-%{prefix}/share/doc/@PACKAGE@-@VERSION@/ChangeLog
-%{prefix}/share/doc/@PACKAGE@-@VERSION@/INSTALL
-%{prefix}/share/doc/@PACKAGE@-@VERSION@/NEWS
-%{prefix}/share/doc/@PACKAGE@-@VERSION@/README
+%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/AUTHORS
+%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/COPYING
+%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/ChangeLog
+%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/INSTALL
+%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/NEWS
+%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/README
 
 
 
