@@ -65,8 +65,8 @@ rm -rf $RPM_BUILD_ROOT
 %{prefix}/bin/edg-se-lib-launcher
 
 
-%{prefix}/include/se/edg_se_launcher.h
-%{prefix}/include/se/edg_se_ptrptr.h
+%{prefix}/include/se/subprocess.h
+%{prefix}/include/se/ptrptr.h
 
 
 %defattr (-,root,root)

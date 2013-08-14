@@ -7,16 +7,16 @@ dnl 	Please disable it in the Anjuta project configuration
 AC_INIT(src/subprocess_test.c)
 AC_CONFIG_AUX_DIR(config)
 
-AM_CONFIG_HEADER(src/debug_level.h)
+AM_CONFIG_HEADER(src/config.h)
 
 
 dnl uncomment when tagging
 #RELEASE=TRUE
 
-VER_ARCHITECTURE=2
-VER_MAJOR=47
-VER_MINOR=6
-VER_PATCH=1
+VER_ARCHITECTURE=1
+VER_MAJOR=0
+VER_MINOR=0
+VER_PATCH=0
 if test "A" = A$RELEASE; then
     VER_PATCH=${VER_PATCH}_`date '+20%y_%m_%d_%H'`
 fi
@@ -27,11 +27,11 @@ AC_SUBST(VER_MAJOR)
 AC_SUBST(VER_MINOR)
 AC_SUBST(VER_PATCH)
 
-LIBRARY_VERSION="$VER_ARCHITECTURE:$VER_MAJOR:1"
+LIBRARY_VERSION="$VER_ARCHITECTURE:$VER_MAJOR:$VER_MINOR"
 AC_SUBST(LIBRARY_VERSION)
 
 
-VERSION_STRING="$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR.$VER_PATCH"
+PACKAGE_VERSION="$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR.$VER_PATCH"
 
 AC_PROG_CC
 AM_PROG_CC_C_O
@@ -162,7 +162,7 @@ AC_DEFINE_UNQUOTED(PACKAGE_MENU_DIR, "${packageprefix}/${packagemenudir}",[Defin
 AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}",[Defines the source code directory])
 
 
-DOCD=${packageprefix}//share/doc/${PACKAGE}-${VERSION_STRING}
+DOCD=${packageprefix}//share/doc/${PACKAGE}-${PACKAGE_VERSION}
 AC_MSG_CHECKING([for directory where to install docs])
 AC_ARG_WITH(doc-dir,[  --with-doc-dir=<dir> Default is $DOCD/],
             doc_dir="$withval", doc_dir="$DOCD")
