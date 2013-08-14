@@ -3,23 +3,27 @@ dnl Created by Anjuta - will be overwritten
 dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
 
+PACKAGE_VERSION=0.0.4
+dnl uncomment when tagging
+#RELEASE=TRUE
+if test "A" = A$RELEASE; then
+    PACKAGE_VERSION=${PACKAGE_VERSION}_rc`date '+20%y_%m_%d_%H'`
+fi
+
+
 # Only continue if this source file exists
+
 AC_INIT(src/subprocess_test.c)
 AC_CONFIG_AUX_DIR(config)
 
 AM_CONFIG_HEADER(src/config.h)
+AC_SUBST(PACKAGE_VERSION)
 
-
-dnl uncomment when tagging
-#RELEASE=TRUE
 
 VER_ARCHITECTURE=1
 VER_MAJOR=0
 VER_MINOR=0
 VER_PATCH=0
-if test "A" = A$RELEASE; then
-    VER_PATCH=${VER_PATCH}_`date '+20%y_%m_%d_%H'`
-fi
 
 AM_INIT_AUTOMAKE(subprocess,$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR,"os@yokel.org","subprocess","http://www.yokel.org/")
 AC_SUBST(VER_ARCHITECTURE)
@@ -31,7 +35,6 @@ LIBRARY_VERSION="$VER_ARCHITECTURE:$VER_MAJOR:$VER_MINOR"
 AC_SUBST(LIBRARY_VERSION)
 
 
-PACKAGE_VERSION="$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR.$VER_PATCH"
 AC_SUBST(PACKAGE_VERSION)
 AC_PROG_CC
 AM_PROG_CC_C_O
@@ -60,7 +63,7 @@ AC_PROG_MAKE_SET
 AC_CHECK_HEADERS([unistd.h sys/wait.h stdio.h stdlib.h string.h])
 AM_PROG_LIBTOOL
 
-AM_INIT_AUTOMAKE(libsubprocess,$PACKAGE_VERSION)
+AM_INIT_AUTOMAKE(libsubprocess,${PACKAGE_VERSION})
 #AM_CONFIG_HEADER(src/config.h)
 
 AC_CONFIG_MACRO_DIR([m4])

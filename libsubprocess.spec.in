@@ -19,7 +19,7 @@ This library is heavilly used in the European Data grid storage Element
 # Prep
 #
 %prep
-%setup -q -n @PACKAGE@-@VERSION@
+%setup -q -n @PACKAGE@-@PACKAGE_VERSION@
 
 #
 # Build
