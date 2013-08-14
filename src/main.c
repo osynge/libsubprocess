@@ -4,10 +4,10 @@
 #include <sys/wait.h>
 
 #include <stdio.h>
-#include "edg_se_launcher.h"
+#include "subprocess.h"
 #define APLICATION "EDG-SE-LIB-BDB-ABSTRACTION"
 #define BUFF_SIZE 4096
-#include "edg_se_ptrptr.h"
+#include "ptrptr.h"
 int test_fork()
 {
 	int child_stdin, child_stdout, child_stderr;

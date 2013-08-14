@@ -1,7 +1,7 @@
 #include "config.h"
 #include "config_local.h"
 
-#include "edg_se_ptrptr.h"
+#include "ptrptr.h"
 #include <stdlib.h>
 #include <string.h>
 #define PTRPTR_BUFFERSIZEDEFAULT 256

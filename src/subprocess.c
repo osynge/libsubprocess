@@ -15,9 +15,9 @@
 #include <asm/errno.h>
 #include <string.h>
 
-#include "edg_se_launcher.h"
+#include "subprocess.h"
 
-#include "edg_se_ptrptr.h"
+#include "ptrptr.h"
 
 /*Launcher Structure*/
 

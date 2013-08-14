@@ -1,13 +1,13 @@
 
 h_sources = \
-	edg_se_launcher.h \
-	edg_se_ptrptr.h
+	subprocess.h \
+	ptrptr.h
 	
 	
 c_sources = \
 	config_local.h \
-	edg_se_launcher.c \
-	edg_se_ptrptr.c
+	subprocess.c \
+	ptrptr.c
 
 
 
