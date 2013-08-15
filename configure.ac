@@ -3,8 +3,11 @@ dnl Created by Anjuta - will be overwritten
 dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
 
-bill=0.0.1
-AC_INIT(subprocess,0.0.2)
+
+AC_INIT(src/subprocess_test.c)
+
+
+
 
 RELEASEVERSION="0.0.31"
 #VERSION=$RELEASEVERSION
@@ -16,10 +19,12 @@ if test "A" = A$RELEASE; then
 fi
 
 
+AC_MSG_WARN([$RELEASEVERSION])
+VERSION=$RELEASEVERSION
+AC_MSG_WARN([$VERSION])
 
-
-
-#AC_INIT(src/subprocess_tes,0.0.1)
+AC_SUBST(VERSION)
+AC_SUBST(RELEASEVERSION)
 
 # Only continue if this source file exists
 
@@ -93,8 +98,8 @@ AC_SUBST(RPM_PREFIX)
 FFFF="1"
 EEEE="sdsdsd"$VERSION
 
-dnl AC_SUBST(RPMVERSION,$RELEASEVERSION)
-AC_SUBST(RPMVERSION,$VERSION)
+AC_SUBST(RPMVERSION,$RELEASEVERSION)
+
 dnl =============
 dnl Check RPM dir
 dnl =============
