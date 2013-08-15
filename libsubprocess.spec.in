@@ -1,6 +1,6 @@
 Summary:  Shared Libary heavilly used by WP5
 Name: @PACKAGE@
-Version: @RPMVERSION@
+Version: @VERSION@
 License: BSD License
 Release: 0
 #Copyright: BSD License

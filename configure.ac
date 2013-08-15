@@ -6,23 +6,10 @@ AC_INIT(src/subprocess_test.c, m4_esyscmd([sh ./versionGen.sh | tr -d '\n']))
 #AC_INIT(src/subprocess_test.c)
 
 
-RELEASEVERSION="0.0.4"
-#VERSION=$RELEASEVERSION
+
+
 dnl uncomment when tagging
-#RELEASE=TRUE
 
-if test "A" = A$RELEASE; then
-    RELEASEVERSION=$RELEASEVERSION`date '+20%y%m%d%H'`
-fi
-
-if test "A" != A$SRC_VERSION; then
-    RELEASEVERSION=$SRC_VERSION
-fi
-
-
-VERSION=$RELEASEVERSION
-
-AC_SUBST(RELEASEVERSION)
 
 # Only continue if this source file exists
 
@@ -92,11 +79,6 @@ dnl AM_GNU_GETTEXT
 AC_SUBST(ac_aux_dir)
 RPM_PREFIX="/usr"
 AC_SUBST(RPM_PREFIX)
-
-FFFF="1"
-EEEE="sdsdsd"$VERSION
-
-AC_SUBST(RPMVERSION,$RELEASEVERSION)
 
 dnl =============
 dnl Check RPM dir
