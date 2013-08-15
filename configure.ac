@@ -9,7 +9,7 @@ AC_INIT(src/subprocess_test.c)
 
 
 
-RELEASEVERSION="0.0.3"
+RELEASEVERSION="0.0.4"
 #VERSION=$RELEASEVERSION
 dnl uncomment when tagging
 #RELEASE=TRUE
