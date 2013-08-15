@@ -40,6 +40,7 @@ AC_CHECK_FUNCS([fork])
 AC_CHECK_FUNCS([waitpid])
 AC_CHECK_FUNCS([malloc])
 AC_CHECK_FUNCS([execv])
+AC_CHECK_FUNCS([fork])
 #
 # Wall
 #
