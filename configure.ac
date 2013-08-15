@@ -2,11 +2,8 @@ dnl Process this file with autoconf to produce a configure script.
 dnl Created by Anjuta - will be overwritten
 dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
-
-
-AC_INIT(src/subprocess_test.c)
-
-
+AC_INIT(src/subprocess_test.c, m4_esyscmd([sh ./versionGen.sh | tr -d '\n']))
+#AC_INIT(src/subprocess_test.c)
 
 
 RELEASEVERSION="0.0.4"
@@ -25,7 +22,6 @@ fi
 
 VERSION=$RELEASEVERSION
 
-AC_SUBST(VERSION)
 AC_SUBST(RELEASEVERSION)
 
 # Only continue if this source file exists
@@ -77,7 +73,7 @@ AC_PROG_MAKE_SET
 AC_CHECK_HEADERS([unistd.h sys/wait.h stdio.h stdlib.h string.h])
 AM_PROG_LIBTOOL
 
-AM_INIT_AUTOMAKE(libsubprocess,${PACKAGE_VERSION})
+AM_INIT_AUTOMAKE(libsubprocess,$PACKAGE_VERSION)
 #AM_CONFIG_HEADER(src/config.h)
 
 AC_CONFIG_MACRO_DIR([m4])
@@ -202,7 +198,6 @@ AC_SUBST(DOC_DIR)
 
 AC_SUBST(PACKAGE_VERSION)
 
-AC_SUBST(VERSION)
 
 
 AC_OUTPUT([
