@@ -1,20 +1,17 @@
 Introduction libsubprocess 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Is a library that hopefully will help people make a nice abstraction to UNIX
-forking and managing pipes. 
+This library name is due to its similarities with a small part of the python's standard subprocess library. 
+It is a decorator abstraction to UNIX forking and managing unnamed pipes, such as stdout and stdin. It was
+created to help developing multiprocess applications in C and C++. The code is written in C but uses macros to allow its use in C++.
 
-While developing a multi process applications it quickly became clear that am
-abstractions to the complexities of unnamed pipes and forking applications would be nicely produced with a decorator style interface.
-
-This library name is due to python's standard subprocess library. The reason I resurrected this code from my CVS checkout on an old disk, is I saw some one request almost exactly this library on the Internet.
-
-This is some code salvaged from the EDG Grid SE project from 2002 - March 2004 but is maybe from as late as 2005, which was intended to be a 
+This is some code salvaged from the EDG Grid SE project from 2002 - March 2004 but is maybe from as late as 2005,
+and resurrected this code from my CVS checkout on an old disk, is I saw some one request almost exactly this library on the Internet.
 
 Usage
 ~~~~~
 
-Example useage:
+Example usage:
 
 
     int child_stdin, child_stdout, child_stderr;
@@ -42,7 +39,6 @@ Example useage:
 	Launcher_SetExecutable(context,"/bin/ls");
 	Launcher_ArgumentsAdd(context,"/");
 	Launcher_ArgumentsAdd(context,"/mnt");
-	Launcher_ArgumentsAdd(context,"/sdkfljflk");
 	fprintf(stdout,"executable='%s'\n",Launcher_GetExecutable(context));
 	Launcher_launch_rc = Launcher_Launch(context);
 	if (0 == Launcher_Running(context))
@@ -83,6 +79,13 @@ Example useage:
 	
 }
 
-Build deps on SL6
+Build depependacies
+~~~~~~~~~~~~~~~~~~~
 
-autoconf automake libtool gcc
+SL6 Build dependacies
+
+    autoconf 
+    automake 
+    libtool 
+    gcc
+
