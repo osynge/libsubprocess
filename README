@@ -1,12 +1,16 @@
 Introduction libsubprocess 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This library name is due to its similarities with a small part of the python's standard subprocess library. 
-It is a decorator abstraction to UNIX forking and managing unnamed pipes, such as stdout and stdin. It was
-created to help developing multiprocess applications in C and C++. The code is written in C but uses macros to allow its use in C++.
+This C/C++ library is a decorator abstraction to UNIX forking and managing 
+unnamed pipes, such as stdout and  stdin. It was created to help developing 
+multiprocess applications in C and C++. The code is written in C but uses 
+macros to allow its use in C++.
 
-This is some code salvaged from the EDG Grid SE project from 2002 - March 2004 but is maybe from as late as 2005,
-and resurrected this code from my CVS checkout on an old disk, is I saw some one request almost exactly this library on the Internet.
+This is some code salvaged from the EDG Grid SE project from 2002 - March 2004 
+but is maybe from as late as 2005, and resurrected this code from my CVS 
+checkout on an old disk, is I saw some one request almost exactly this library 
+on the Internet. Its name is due to its similarities with a small part of the 
+python's standard subprocess library.
 
 Usage
 ~~~~~
