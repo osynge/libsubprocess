@@ -1,4 +1,88 @@
+Introduction libsubprocess 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Is a library that hopefully will help people make a nice abstraction to UNIX
+forking and managing pipes. 
+
+While developing a multi process applications it quickly became clear that am
+abstractions to the complexities of unnamed pipes and forking applications would be nicely produced with a decorator style interface.
+
+This library name is due to python's standard subprocess library. The reason I resurrected this code from my CVS checkout on an old disk, is I saw some one request almost exactly this library on the Internet.
+
+This is some code salvaged from the EDG Grid SE project from 2002 - March 2004 but is maybe from as late as 2005, which was intended to be a 
+
+Usage
+~~~~~
+
+Example useage:
+
+
+    int child_stdin, child_stdout, child_stderr;
+	int Launcher_launch_rc;
+	int done;
+	char * buf;
+	int len;
+	int rc;
+	pid_t Launcher_launch_pid;
+	Launcher context;
+	context = Launcher_Create();
+	
+	
+	/*
+	child_stdin = Launcher_OpenPipe(context,0,LAUNCHER_PIPE_WRITE);
+	*/
+	child_stdout = Launcher_PipeCreate(context,1,LAUNCHER_PIPE_READ);
+	fprintf(stdout,"child_stdout=%d\n",child_stdout);
+	
+	child_stderr = Launcher_PipeCreate(context,2,LAUNCHER_PIPE_READ);
+	
+	
+	Launcher_SetExecutable(context,"/bin/cat");
+	fprintf(stdout,"executable='%s'\n",Launcher_GetExecutable(context));
+	Launcher_SetExecutable(context,"/bin/ls");
+	Launcher_ArgumentsAdd(context,"/");
+	Launcher_ArgumentsAdd(context,"/mnt");
+	Launcher_ArgumentsAdd(context,"/sdkfljflk");
+	fprintf(stdout,"executable='%s'\n",Launcher_GetExecutable(context));
+	Launcher_launch_rc = Launcher_Launch(context);
+	if (0 == Launcher_Running(context))
+	{
+		printf("running\n");
+	}
+	else
+	{
+		printf("finnished\n");
+	}
+	
+	Launcher_launch_pid = Launcher_GetPid(context);
+	child_stdout = Launcher_PipeGet(context,1);
+	child_stderr = Launcher_PipeGet(context,2);
+	Launcher_Wait(context,WUNTRACED);
+	fprintf(stdout,"Launcher_launch_pid='%d'\n",Launcher_launch_pid);
+	buf = malloc(sizeof(char *) * BUFF_SIZE);
+	do 
+	{
+		len = read(child_stdout, buf,BUFF_SIZE);
+		done = len < BUFF_SIZE;
+		buf[len] = '\0';
+		fprintf(stdout,"fd,len,content,%d,%d,%s\n",child_stdout,len,buf);
+				
+	} while (!done);
+	do 
+	{
+		len = read(child_stderr, buf,BUFF_SIZE);
+		done = len < BUFF_SIZE;
+		buf[len] = '\0';
+		fprintf(stdout,"fd,len,content,%d,%d,%s\n",child_stderr,len,buf);
+				
+	} while (!done);
+	free(buf);
+	/*Launcher_launch_rc = Launcher_Wait(context);*/
+	Launcher_Free(context);
+	return 0;
+	
+}
 
 Build deps on SL6
 
-autoconf automake libtool
+autoconf automake libtool gcc
