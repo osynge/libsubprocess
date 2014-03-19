@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 #
 %files
 
-%{prefix}/lib/libsubprocess.*
+%_libdir/libsubprocess.*
 
 
 
