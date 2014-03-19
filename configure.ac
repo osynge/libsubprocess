@@ -2,20 +2,7 @@ dnl Process this file with autoconf to produce a configure script.
 dnl Created by Anjuta - will be overwritten
 dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
-AC_INIT(src/subprocess_test.c, m4_esyscmd([sh ./versionGen.sh | tr -d '\n']))
-#AC_INIT(src/subprocess_test.c)
 
-
-
-
-dnl uncomment when tagging
-
-
-# Only continue if this source file exists
-
-AC_CONFIG_AUX_DIR(config)
-
-AM_CONFIG_HEADER(src/config.h)
 
 
 VER_ARCHITECTURE=1
@@ -23,13 +10,31 @@ VER_MAJOR=0
 VER_MINOR=0
 VER_PATCH=0
 
-AM_INIT_AUTOMAKE(subprocess,$VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR,"os@yokel.org","subprocess","http://www.yokel.org/")
+AC_INIT(subprocess,0.0.7)
+dnl AC_INIT(src/subprocess_test.c)
+
+LT_INIT
+
+AC_CONFIG_SRCDIR([src/subprocess_test.c])
+
+dnl uncomment when tagging
+
+
+# Only continue if this source file exists
+
+dnl AC_CONFIG_AUX_DIR(config)
+
+AM_CONFIG_HEADER(src/config.h)
+
+dnl AM_INIT_AUTOMAKE(subprocess, $VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR,"os@yokel.org","subprocess","http://www.yokel.org/")
+AM_INIT_AUTOMAKE
 AC_SUBST(VER_ARCHITECTURE)
 AC_SUBST(VER_MAJOR)
 AC_SUBST(VER_MINOR)
 AC_SUBST(VER_PATCH)
 
-LIBRARY_VERSION="$VER_ARCHITECTURE:$VER_MAJOR:$VER_MINOR"
+dnl LIBRARY_VERSION="$(VER_ARCHITECTURE):${VER_MAJOR}:${VER_MINOR}"
+LIBRARY_VERSION=1:0:0
 
 AC_SUBST(LIBRARY_VERSION)
 
@@ -62,7 +67,7 @@ AC_PROG_MAKE_SET
 AC_CHECK_HEADERS([unistd.h sys/wait.h stdio.h stdlib.h string.h])
 AM_PROG_LIBTOOL
 
-AM_INIT_AUTOMAKE(libsubprocess,$PACKAGE_VERSION)
+dnl AM_INIT_AUTOMAKE(libsubprocess,$PACKAGE_VERSION)
 #AM_CONFIG_HEADER(src/config.h)
 
 AC_CONFIG_MACRO_DIR([m4])

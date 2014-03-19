@@ -15,9 +15,8 @@
 #include <asm/errno.h>
 #include <string.h>
 
-#include "subprocess.h"
-
 #include "ptrptr.h"
+#include "subprocess.h"
 
 /*Launcher Structure*/
 
