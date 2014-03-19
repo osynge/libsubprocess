@@ -41,14 +41,14 @@ dist-hook:
 
 
 
-rpm: dist @PACKAGE@.spec
+rpm: dist lib@PACKAGE@.spec
 	mkdir -p $(topdir)/SOURCES \
 	$(topdir)/SPECS \
 	$(topdir)/BUILD \
 	$(topdir)/RPMS $(topdir)/SRPMS
 	cp @PACKAGE@-@VERSION@.tar.gz $(topdir)/SOURCES
-	cp @PACKAGE@.spec $(topdir)/SPECS
-	rpmbuild --define "_topdir $(topdir)" -ba @PACKAGE@.spec
+	cp lib@PACKAGE@.spec $(topdir)/SPECS
+	rpmbuild --define "_topdir $(topdir)" -ba lib@PACKAGE@.spec
 
 userdoc:
 	doxygen doxygen.ini
