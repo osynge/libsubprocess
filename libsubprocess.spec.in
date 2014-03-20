@@ -49,7 +49,6 @@ macros to allow its use in C++.
 ./configure --prefix=%{prefix} \
 	 --libdir=%_libdir \
 	 --disable-static \
-	--with-doc-dir=%_defaultdocdir/%name \
 	 --docdir=%_defaultdocdir/%name
 make
 
