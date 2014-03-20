@@ -170,21 +170,6 @@ AC_DEFINE_UNQUOTED(PACKAGE_MENU_DIR, "${packageprefix}/${packagemenudir}",[Defin
 AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}",[Defines the source code directory])
 
 
-DOCD=${packageprefix}//share/doc/${PACKAGE}-${PACKAGE_VERSION}
-AC_MSG_CHECKING([for directory where to install docs])
-AC_ARG_WITH(doc-dir,[  --with-doc-dir=<dir> Default is $DOCD/],
-            doc_dir="$withval", doc_dir="$DOCD")
-if test -d "$doc_dir" ; then
-    AC_MSG_RESULT([found $doc_dir])
-    DOC_DIR=$doc_dir
-else
-    AC_MSG_RESULT([no such directory $doc_dir])
-    AC_MSG_RESULT([the directory $doc_dir will be created for you if possible])
-    DOC_DIR=$doc_dir
-fi
-
-AC_SUBST(DOC_DIR)
-
 AC_SUBST(PACKAGE_VERSION)
 
 

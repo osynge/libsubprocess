@@ -1,6 +1,7 @@
 #!/bin/sh
 set -x
 mkdir -p config
+aclocal
 aclocal -I config
 #aclocal-1.10 -I config
 autoheader

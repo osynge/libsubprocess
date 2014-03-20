@@ -1,20 +1,39 @@
-Summary:  Shared Libary heavilly used by WP5
-Name: @PACKAGE@
-Version: @VERSION@
-License: BSD License
+Summary:  Shared libary for UNIX forking 
+Name: subprocess
+Version: 0.0.7
+License: BSD-3-Clause
 Release: 0
 #Copyright: BSD License
 Group: Grid/EDG
-Prefix: @RPM_PREFIX@
+Prefix: /usr
 URL: http://marianne.in2p3.fr/datagrid/
-Source: http://datagrid.in2p3.fr/pkgs/@PACKAGE@-@VERSION@.tar.gz
+Source: http://datagrid.in2p3.fr/pkgs/subprocess-0.0.7.tar.gz
 BuildRoot: %{_tmppath}/%{name}-root
 %description
-edg-se-libstringextra is a library that was developed for the yokel web server
-projects which is released as BSD License.
+This C/C++ library is a decorator abstraction to UNIX forking and managing 
+unnamed pipes, such as stdout and  stdin. It was created to help developing 
+multiprocess applications in C and C++. The code is written in C but uses 
+macros to allow its use in C++.
 
 This library is heavilly used in the European Data grid storage Element
 
+%package -n libsubprocess
+Summary: Shared libary for UNIX forking 
+Group: Development/Libraries/C and C++
+%description -n libsubprocess
+This C/C++ library is a decorator abstraction to UNIX forking and managing 
+unnamed pipes, such as stdout and  stdin. It was created to help developing 
+multiprocess applications in C and C++. The code is written in C but uses 
+macros to allow its use in C++.
+
+%package -n libsubprocess-devel
+Summary: Shared libary for UNIX forking 
+Group: Development/Libraries/C and C++
+%description -n libsubprocess-devel
+This C/C++ library is a decorator abstraction to UNIX forking and managing 
+unnamed pipes, such as stdout and  stdin. It was created to help developing 
+multiprocess applications in C and C++. The code is written in C but uses 
+macros to allow its use in C++.
 #
 # Prep
 #
@@ -27,25 +46,26 @@ This library is heavilly used in the European Data grid storage Element
 %build
 #./configure --prefix=%{prefix} \
 #	--with-rpm-version=@RPMVERSION@
-./configure --prefix=%{prefix}
+./configure --prefix=%{prefix} \
+	 --libdir=%_libdir \
+	 --disable-static \
+	--with-doc-dir=%_defaultdocdir/%name \
+	 --docdir=%_defaultdocdir/%name
 make
 
 #
 # Install
 #
 %install
-
 if [ -d $RPM_BUILD_ROOT ]; then rm -rf $RPM_BUILD_ROOT; fi
-#make install
 make install DESTDIR=$RPM_BUILD_ROOT
-#cp src/*.hh $RPM_BUILD_ROOT/opt/edg/include/se/
+# remove .la file
+rm -f %{buildroot}%{_libdir}/libsubprocess.la
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-#
-# Script sections (Try to avoid them in Testbed 1 context)
-#
 %post
 %preun
 %postun
@@ -53,38 +73,26 @@ rm -rf $RPM_BUILD_ROOT
 #
 # Files 
 #
-%files
+%files -n subprocess
+%defattr (-,root,root)
+%doc %_defaultdocdir/%name/AUTHORS
+%doc %_defaultdocdir/%name/COPYING
+%doc %_defaultdocdir/%name/ChangeLog
+%doc %_defaultdocdir/%name/INSTALL
+%doc %_defaultdocdir/%name/NEWS
+%doc %_defaultdocdir/%name/README
 
-%_libdir/libsubprocess.*
+%files -n libsubprocess
+%defattr(-, root, root)
+%{_libdir}/libsubprocess.so.*
 
-
-
+%files -n libsubprocess-devel
+%defattr(-, root, root)
+%{_libdir}/libsubprocess.so
 %{prefix}/include/yokel/subprocess.h
 %{prefix}/include/yokel/ptrptr.h
-
-
-%defattr (-,root,root)
-#%doc README LICENSE 
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/README
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/COPYING
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/NEWS
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/index.html
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.sgml
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.ps
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.pdf
-#%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/edg-example.html
-
-%defattr (-,root,root)
-%doc 
-%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/AUTHORS
-%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/COPYING
-%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/ChangeLog
-%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/INSTALL
-%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/NEWS
-%{prefix}/share/doc/@PACKAGE@-@PACKAGE_VERSION@/README
-
-
 
 %changelog
 * Wed Mar 27 2002 Owen Synge <o.m.synge@rl.ac.uk>
 - 1.05
+
