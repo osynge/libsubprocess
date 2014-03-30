@@ -6,8 +6,8 @@ Release: 0
 #Copyright: BSD License
 Group: Grid/EDG
 Prefix: /usr
-URL: http://marianne.in2p3.fr/datagrid/
-Source: http://datagrid.in2p3.fr/pkgs/subprocess-0.0.7.tar.gz
+URL: https://github.com/osynge/libsubprocess
+Source: http://www.yokel.org/pub/software/yokel.org/scientific/6/development/x86_64/tgz/@PACKAGE@-@VERSION@.tar.gz
 BuildRoot: %{_tmppath}/%{name}-root
 %description
 This C/C++ library is a decorator abstraction to UNIX forking and managing 
