@@ -1,6 +1,6 @@
 Summary:  Shared libary for UNIX forking 
-Name: subprocess
-Version: 0.0.7
+Name: @PACKAGE@
+Version: @VERSION@
 License: BSD-3-Clause
 Release: 0
 #Copyright: BSD License
@@ -17,7 +17,7 @@ macros to allow its use in C++.
 
 This library is heavilly used in the European Data grid storage Element
 
-%package -n libsubprocess
+%package -n lib@PACKAGE@
 Summary: Shared libary for UNIX forking 
 Group: Development/Libraries/C and C++
 %description -n libsubprocess
@@ -26,7 +26,7 @@ unnamed pipes, such as stdout and  stdin. It was created to help developing
 multiprocess applications in C and C++. The code is written in C but uses 
 macros to allow its use in C++.
 
-%package -n libsubprocess-devel
+%package -n lib@PACKAGE@-devel
 Summary: Shared libary for UNIX forking 
 Group: Development/Libraries/C and C++
 %description -n libsubprocess-devel
