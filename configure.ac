@@ -3,14 +3,12 @@ dnl Created by Anjuta - will be overwritten
 dnl If you don't want it to overwrite it,
 dnl 	Please disable it in the Anjuta project configuration
 
-
-
 VER_ARCHITECTURE=1
 VER_MAJOR=0
 VER_MINOR=0
 VER_PATCH=0
 
-AC_INIT(subprocess,0.0.7)
+AC_INIT(subprocess,0.0.8)
 dnl AC_INIT(src/subprocess_test.c)
 
 LT_INIT
@@ -24,7 +22,7 @@ dnl uncomment when tagging
 
 dnl AC_CONFIG_AUX_DIR(config)
 
-AM_CONFIG_HEADER(src/config.h)
+
 
 dnl AM_INIT_AUTOMAKE(subprocess, $VER_ARCHITECTURE.$VER_MAJOR.$VER_MINOR,"os@yokel.org","subprocess","http://www.yokel.org/")
 AM_INIT_AUTOMAKE
@@ -68,7 +66,7 @@ AC_CHECK_HEADERS([unistd.h sys/wait.h stdio.h stdlib.h string.h])
 AM_PROG_LIBTOOL
 
 dnl AM_INIT_AUTOMAKE(libsubprocess,$PACKAGE_VERSION)
-#AM_CONFIG_HEADER(src/config.h)
+AM_CONFIG_HEADER(src/config.h)
 
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -90,7 +88,7 @@ AC_SUBST(RPM_PREFIX)
 dnl =============
 dnl Check RPM dir
 dnl =============
-RPMD=`pwd`
+RPMD=`pwd`/rpm
 AC_MSG_CHECKING([for directory where to create rpms])
 AC_ARG_WITH(rpm-dir,[  --with-rpm-dir=<dir> Default is \$RPMD/],
             rpm_dir="$withval", rpm_dir="$RPMD")
